@@ -68,7 +68,7 @@ O banco de dados foi modelado com 6 tabelas principais, organizadas em um schema
 ## 👨‍💻 Desenvolvido por
 
 - Hallef KayK Damacena Oliveira
-- Cainã Mateus
+
 
 ---
 
