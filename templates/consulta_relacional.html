@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuários com ID > 1 e Email .com</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Usuários com ID > 1 e Email .com</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th><th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for linha in resultado %}
+            <tr>
+                <td>{{ linha[0] }}</td><td>{{ linha[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Voltar</a>
+</body>
+</html>
