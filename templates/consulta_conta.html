@@ -1,32 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Total de Usuários Cadastrados</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
-    <h1>Total de Usuários Cadastrados</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for linha in resultado %}
-            <tr>
-                <td>{{ linha[0] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="/">Voltar</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Gamix - Consulta COUNT{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Consulta com COUNT</h2>
+    <p>Consulta utilizando COUNT para obter o total de usuários cadastrados.</p>
+    
+    <div class="result-box">
+        <div class="count-display">
+            <span class="count-label">Total de Usuários:</span>
+            <span class="count-value">{{ resultado[0][0] }}</span>
+        </div>
+    </div>
+    
+    <div class="info-box">
+        <p><strong>Sobre:</strong> Esta consulta utiliza a função de agregação COUNT(*) para contar todos os registros na tabela de usuários.</p>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+    </div>
+</div>
+
+<style>
+.actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.result-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.count-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.count-label {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.count-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.info-box p {
+    margin: 0;
+}
+
+.info-box strong {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .count-value {
+        font-size: 2.5rem;
+    }
+}
+</style>
+{% endblock %}

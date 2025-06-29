@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Gamix - Consulta Relacional{% endblock %}
+{% block title %}Gamix - Consulta EXISTS{% endblock %}
 
 {% block content %}
 <div class="card">
-    <h2>Consulta Relacional</h2>
-    <p>Consulta utilizando WHERE com múltiplas condições (id > 1 AND email LIKE '%@%.com').</p>
+    <h2>Usuários com Pedidos</h2>
+    <p>Consulta utilizando EXISTS para encontrar usuários que possuem pedidos registrados.</p>
     
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
+                    <th>Nome do Usuário</th>
                 </tr>
             </thead>
             <tbody>
                 {% for linha in resultado %}
                 <tr>
                     <td>{{ linha[0] }}</td>
-                    <td>{{ linha[1] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

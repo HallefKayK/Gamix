@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Anos Distintos de Cadastro</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
-    <h1>Anos Distintos de Cadastro</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Ano</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for linha in resultado %}
-            <tr>
-                <td>{{ linha[0] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="/">Voltar</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Gamix - Consulta DISTINCT{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Consulta com DISTINCT</h2>
+    <p>Consulta utilizando DISTINCT para obter anos únicos de cadastro dos usuários.</p>
+    
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ano de Cadastro</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in resultado %}
+                <tr>
+                    <td>{{ linha[0] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+    </div>
+</div>
+
+<style>
+.actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.table td {
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+</style>
+{% endblock %}

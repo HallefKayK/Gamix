@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Gamix - Consulta Relacional{% endblock %}
+{% block title %}Gamix - Consulta Agrupamento{% endblock %}
 
 {% block content %}
 <div class="card">
-    <h2>Consulta Relacional</h2>
-    <p>Consulta utilizando WHERE com múltiplas condições (id > 1 AND email LIKE '%@%.com').</p>
+    <h2>Usuários por Ano de Cadastro</h2>
+    <p>Consulta utilizando GROUP BY para agrupar usuários por ano de cadastro.</p>
     
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
+                    <th>Ano</th>
+                    <th>Quantidade de Usuários</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,11 +30,4 @@
         <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
     </div>
 </div>
-
-<style>
-.actions {
-    margin-top: 2rem;
-    text-align: right;
-}
-</style>
 {% endblock %}

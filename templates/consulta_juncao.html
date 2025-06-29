@@ -1,32 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuários e seus Pedidos</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
-    <h1>Usuários e seus Pedidos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th><th>ID do Pedido</th><th>Data do Pedido</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for linha in resultado %}
-            <tr>
-                <td>{{ linha[0] }}</td><td>{{ linha[1] }}</td><td>{{ linha[2] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="/">Voltar</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Gamix - Consulta com Junção{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Consulta com JOIN</h2>
+    <p>Consulta utilizando JOIN para relacionar usuários com seus pedidos.</p>
+    
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome do Usuário</th>
+                    <th>ID do Pedido</th>
+                    <th>Data do Pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in resultado %}
+                <tr>
+                    <td>{{ linha[0] }}</td>
+                    <td>{{ linha[1] }}</td>
+                    <td>{{ linha[2]|default('N/A') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+    </div>
+</div>
+
+<style>
+.actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.table td:nth-child(2) {
+    text-align: center;
+}
+</style>
+{% endblock %}

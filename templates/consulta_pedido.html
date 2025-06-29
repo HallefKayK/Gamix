@@ -1,32 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuários com Pedido (via IN)</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
-    <h1>Usuários com Pedido (via IN)</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for linha in resultado %}
-            <tr>
-                <td>{{ linha[0] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="/">Voltar</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Gamix - Consulta IN{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Consulta com IN</h2>
+    <p>Consulta utilizando IN para encontrar usuários que possuem pedidos registrados.</p>
+    
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome do Usuário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for linha in resultado %}
+                <tr>
+                    <td>{{ linha[0] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="info-box">
+        <p><strong>Consulta SQL:</strong> SELECT nome FROM usuarios WHERE id IN (SELECT usuario_id FROM pedidos)</p>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+    </div>
+</div>
+
+<style>
+.actions {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.info-box p {
+    margin: 0;
+}
+
+.info-box strong {
+    color: var(--accent-color);
+}
+</style>
+{% endblock %}
