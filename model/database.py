@@ -102,8 +102,9 @@ class Database:
             logging.error(f"Erro ao fechar conexão: {e}")
     
     def __enter__(self):
-        """Context manager - entrada"""
+        self.cursor.execute(f"SET search_path TO {Config.DB_SCHEMA};")
         return self
+
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Context manager - saída"""
